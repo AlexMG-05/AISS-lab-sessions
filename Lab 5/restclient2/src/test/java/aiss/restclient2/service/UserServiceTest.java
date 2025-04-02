@@ -28,4 +28,36 @@ class UserServiceTest {
         UserResponse user = service.findUserById(2);
         System.out.println(user);
     }
+
+    @Test
+    void createUser() {
+        User newUser = new User();
+        newUser.setFirstName("Pablo");
+        newUser.setLastName("Motos");
+        newUser.setEmail("pabmot@us.es");
+        User createdUser = service.createUser(newUser);
+        System.out.println(createdUser);
+    }
+
+    @Test
+    void updateUser() {
+        Integer id = 2;
+        User u = new User();
+        u.setFirstName("Ronaldo");
+        u.setId(2);
+        User updatedUser = service.updateUser(u, id);
+        assertTrue(u.getId()==id, "The id is wrong");
+        System.out.println(updatedUser);
+    }
+
+
+    @Test
+    void deleteUser() {
+        int id = 2;
+        service.deleteUser(id);
+        /*
+        UserResponse user = service.findUserById(id);
+        assertNull(user, "The user has been deleted");
+        */
+    }
 }
